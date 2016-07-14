@@ -1,7 +1,7 @@
 # Todo: make main program dinamically linked
 
 Name:           kvazaar
-Version:        0.8.2
+Version:        0.8.3
 Release:        1%{?dist}
 Summary:        An open-source HEVC encoder
 License:        LGPLv2+
@@ -67,6 +67,9 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Thu Jul 14 2016 Simone Caronni <negativo17@gmail.com> - 0.8.3-1
+- Update to 0.8.3.
+
 * Fri Mar 04 2016 Simone Caronni <negativo17@gmail.com> - 0.8.2-1
 - Update to 0.8.2, remove old build/install procedure.
 
