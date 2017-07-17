@@ -1,13 +1,15 @@
 # Todo: make main program dinamically linked
 
 Name:           kvazaar
-Version:        1.0.0
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        An open-source HEVC encoder
 License:        LGPLv2+
 URL:            http://ultravideo.cs.tut.fi/#encoder
 
 Source0:        https://github.com/ultravideo/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Fix GCC 7 build
+Patch0:         https://github.com/ultravideo/kvazaar/commit/47a9f0de049e77e866ea5bdd4bc7c795ea6dd641.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -33,7 +35,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 autoreconf -vif
 %configure --disable-static
 
@@ -68,6 +70,9 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Mon Jul 17 2017 Simone Caronni <negativo17@gmail.com> - 1.1.0-1
+- Update to 1.1.0.
+
 * Wed Nov 09 2016 Simone Caronni <negativo17@gmail.com> - 1.0.0-1
 - Update to 1.0.0.
 
