@@ -2,7 +2,7 @@
 
 Name:           kvazaar
 Version:        1.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An open-source HEVC encoder
 License:        LGPLv2+
 URL:            http://ultravideo.cs.tut.fi/#encoder
@@ -11,6 +11,7 @@ Source0:        https://github.com/ultravideo/%{name}/archive/v%{version}.tar.gz
 
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc
 BuildRequires:  libtool
 
 %description
@@ -68,6 +69,9 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Thu Sep 20 2018 Simone Caronni <negativo17@gmail.com> - 1.2.0-2
+- Add GCC build requirement.
+
 * Tue Jan 09 2018 Simone Caronni <negativo17@gmail.com> - 1.2.0-1
 - Update to 1.2.0.
 
