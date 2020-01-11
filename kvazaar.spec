@@ -1,8 +1,8 @@
 # Todo: make main program dinamically linked
 
 Name:           kvazaar
-Version:        1.2.0
-Release:        2%{?dist}
+Version:        1.3.0
+Release:        1%{?dist}
 Summary:        An open-source HEVC encoder
 License:        LGPLv2+
 URL:            http://ultravideo.cs.tut.fi/#encoder
@@ -69,6 +69,9 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Sat Jan 11 2020 Simone Caronni <negativo17@gmail.com> - 1.3.0-1
+- Update to 1.3.0.
+
 * Thu Sep 20 2018 Simone Caronni <negativo17@gmail.com> - 1.2.0-2
 - Add GCC build requirement.
 
