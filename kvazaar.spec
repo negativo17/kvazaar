@@ -1,7 +1,7 @@
 # Todo: make main program dinamically linked
 
 Name:           kvazaar
-Version:        1.3.0
+Version:        2.0.0
 Release:        1%{?dist}
 Summary:        An open-source HEVC encoder
 License:        LGPLv2+
@@ -13,6 +13,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool
+BuildRequires:  yasm
 
 %description
 Kvazaar is the leading academic open-source HEVC encoder developed from scratch
@@ -36,39 +37,39 @@ developing applications that use %{name}.
 %prep
 %autosetup
 autoreconf -vif
-%configure --disable-static
+%configure --enable-static=no
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-
 find %{buildroot} -name '*.la' -delete
 
 # Pick up docs in the files section
 rm -fr %{buildroot}%{_docdir}
 
-%post libs -p /sbin/ldconfig
-
-%postun libs -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
-%{_bindir}/*
-%{_mandir}/man1/*
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.*
 
 %files libs
-%{!?_licensedir:%global license %%doc}
 %license COPYING
 %doc README.md CREDITS
-%{_libdir}/*.so.*
+%{_libdir}/lib%{name}.so.*
 
 %files devel
-%{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%{_includedir}/%{name}.h
+%{_libdir}/lib%{name}.so
+%{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Sat May 23 2020 Simone Caronni <negativo17@gmail.com> - 2.0.0-1
+- Update to 2.0.0.
+- Update SPEC file.
+
 * Sat Jan 11 2020 Simone Caronni <negativo17@gmail.com> - 1.3.0-1
 - Update to 1.3.0.
 
