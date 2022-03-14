@@ -1,10 +1,8 @@
-# Todo: make main program dinamically linked
-
 Name:           kvazaar
-Version:        2.0.0
+Version:        2.1.0
 Release:        1%{?dist}
 Summary:        An open-source HEVC encoder
-License:        LGPLv2+
+License:        BSD and ISC
 URL:            http://ultravideo.cs.tut.fi/#encoder
 
 Source0:        https://github.com/ultravideo/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -49,16 +47,17 @@ find %{buildroot} -name '*.la' -delete
 # Pick up docs in the files section
 rm -fr %{buildroot}%{_docdir}
 
-%ldconfig_scriptlets
+%{?ldconfig_scriptlets}
 
 %files
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.*
 
 %files libs
-%license COPYING
+%license LICENSE*
 %doc README.md CREDITS
-%{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{name}.so.6
+%{_libdir}/lib%{name}.so.6.6.0
 
 %files devel
 %{_includedir}/%{name}.h
@@ -66,6 +65,9 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Mon Mar 14 2022 Simone Caronni <negativo17@gmail.com> - 2.1.0-1
+- Update to 2.1.0.
+
 * Sat May 23 2020 Simone Caronni <negativo17@gmail.com> - 2.0.0-1
 - Update to 2.0.0.
 - Update SPEC file.
