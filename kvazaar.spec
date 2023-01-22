@@ -1,6 +1,6 @@
 Name:           kvazaar
-Version:        2.1.0
-Release:        2%{?dist}
+Version:        2.2.0
+Release:        1%{?dist}
 Summary:        An open-source HEVC encoder
 License:        BSD and ISC
 URL:            http://ultravideo.cs.tut.fi/#encoder
@@ -56,8 +56,8 @@ rm -fr %{buildroot}%{_docdir}
 %files libs
 %license LICENSE*
 %doc README.md CREDITS
-%{_libdir}/lib%{name}.so.6
-%{_libdir}/lib%{name}.so.6.6.0
+%{_libdir}/lib%{name}.so.7
+%{_libdir}/lib%{name}.so.7.2.0
 
 %files devel
 %{_includedir}/%{name}.h
@@ -65,6 +65,9 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Sun Jan 22 2023 Simone Caronni <negativo17@gmail.com> - 2.2.0-1
+- Update to 2.2.0.
+
 * Sat Apr 02 2022 Simone Caronni <negativo17@gmail.com> - 2.1.0-2
 - Do not execute autoreconf/configure in the prep section.
 
