@@ -1,20 +1,17 @@
 Name:           kvazaar
-Version:        2.2.0
-Release:        2%{?dist}
+Version:        2.3.0
+Release:        1%{?dist}
 Summary:        An open-source HEVC encoder
 License:        BSD and ISC
 URL:            http://ultravideo.cs.tut.fi/#encoder
 
 Source0:        https://github.com/ultravideo/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
-Patch0:         https://github.com/ultravideo/kvazaar/commit/580c6e27586d82394b1912ea1ef9932f8572a59d.patch
-Patch1:         https://github.com/ultravideo/kvazaar/commit/219d52e097f94e6f47ccc94aec47f35d2bc64c1d.patch
-Patch2:         https://github.com/ultravideo/kvazaar/commit/aaae5b0f4926065136f287876c6bc41631bae692.patch
-Patch3:         https://github.com/ultravideo/kvazaar/commit/aab6aa9b349d2768f9371ef58680298c200e47e6.patch
+Patch0:         https://github.com/ultravideo/kvazaar/commit/f6a9d92a30083b5e228ca1126418e12c515bfa69.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gcc
+BuildRequires:  gcc-toolset-10-annobin
+BuildRequires:  gcc-toolset-10-gcc
 BuildRequires:  libtool
 BuildRequires:  yasm
 
@@ -41,6 +38,8 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+. /opt/rh/gcc-toolset-10/enable
+
 autoreconf -vif
 %configure --enable-static=no
 %make_build
@@ -62,7 +61,7 @@ rm -fr %{buildroot}%{_docdir}
 %license LICENSE*
 %doc README.md CREDITS
 %{_libdir}/lib%{name}.so.7
-%{_libdir}/lib%{name}.so.7.2.0
+%{_libdir}/lib%{name}.so.7.3.0
 
 %files devel
 %{_includedir}/%{name}.h
@@ -70,6 +69,9 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Thu Jan 18 2024 Simone Caronni <negativo17@gmail.com> - 2.3.0-1
+- Update to 2.3.0.
+
 * Tue Oct 17 2023 Simone Caronni <negativo17@gmail.com> - 2.2.0-2
 - Apply upstream patches.
 
