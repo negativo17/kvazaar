@@ -1,9 +1,9 @@
 Name:           kvazaar
 Version:        2.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An open-source HEVC encoder
 License:        BSD and ISC
-URL:            http://ultravideo.cs.tut.fi/#encoder
+URL:            https://ultravideo.fi/kvazaar.html
 
 Source0:        https://github.com/ultravideo/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
@@ -47,8 +47,6 @@ find %{buildroot} -name '*.la' -delete
 # Pick up docs in the files section
 rm -fr %{buildroot}%{_docdir}
 
-%{?ldconfig_scriptlets}
-
 %files
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.*
@@ -65,6 +63,9 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Thu Sep 26 2024 Simone Caronni <negativo17@gmail.com> - 2.3.1-2
+- Update SPEC file.
+
 * Fri Apr 12 2024 Simone Caronni <negativo17@gmail.com> - 2.3.1-1
 - Update to 2.3.1.
 
