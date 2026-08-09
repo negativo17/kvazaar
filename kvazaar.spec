@@ -11,7 +11,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool
-BuildRequires:  yasm
 
 %description
 Kvazaar is the leading academic open-source HEVC encoder developed from scratch
